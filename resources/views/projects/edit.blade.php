@@ -4,8 +4,10 @@
     <h1>Edit Project</h1>
 
     <form method="POST" action="/projects/{{ $project->id }}">
-        {{ method_field('PATCH')}}
-        {{ CSRF_field() }}
+        <!-- {{ method_field('PATCH')}} -->
+        <!-- {{ CSRF_field() }} -->
+        @method('PATCH')
+        @csrf
 
         <div class="form-group">
             <label for="title">Title</label>
@@ -22,8 +24,10 @@
     </form>
 
     <form method="POST" action="/projects/{{ $project->id }}">
-            {{ method_field('DELETE')}}
-            {{ CSRF_field() }}
+            <!-- {{ method_field('DELETE')}} -->
+            <!-- {{ CSRF_field() }} -->
+            @method('DELETE')
+            @csrf
             <button type="submit" class="btn btn-danger">Delete</button>    
     </form>
     
