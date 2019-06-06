@@ -16,6 +16,13 @@ class ProjectsController extends Controller
         return view('projects.index', ['projects' => $projects]);  // kan ook schrijven "compact('projects')" ipv [..]
     }
 
+    public function show() 
+    {
+
+        
+
+    }
+
     public function create() 
     {
 
@@ -35,6 +42,35 @@ class ProjectsController extends Controller
 
         return redirect('/projects');
        
+    }
+
+    public function edit($id) 
+    {
+        $project = Project::find($id);
+        return view('projects.edit', ['project'=>$project]);           //of: compact('project')
+
+    }
+
+    public function update($id) 
+    {
+        $project = Project::find($id);
+
+        $project->title = request('title');
+        $project->description = request('description');
+
+        $project->save();
+
+        return redirect('/projects');
+
+    }
+
+    public function destroy($id) 
+    {
+
+        Project::find($id)->delete();
+        
+        return redirect('/projects');
+
     }
     
 }
